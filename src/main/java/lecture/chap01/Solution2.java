@@ -30,10 +30,15 @@ public class Solution2 {
 //        return sb.toString();
         String answer = "";
         for (char x : inputString.toCharArray()) {
-            if (Character.isLowerCase(x)) {
-                answer += Character.toUpperCase(x);
+//            if (Character.isLowerCase(x)) {
+//                answer += Character.toUpperCase(x);
+//            } else {
+//                answer += Character.toLowerCase(x);
+//            }
+            if (x >= 97 && x < 122) {
+                answer += (char) (x - 32);
             } else {
-                answer += Character.toLowerCase(x);
+                answer += (char) (x + 32);
             }
         }
         return answer;
