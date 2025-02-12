@@ -13,23 +13,44 @@ public class Solution5 {
     }
 
     public String reverseOnlyAlphabet(String str) {
+        String answer;
+
+        char[] s = str.toCharArray();
         int lt = 0;
         int rt = str.length() - 1;
-        char[] arr = str.toCharArray();
 
-        while (lt < rt) {
-            if (!Character.isAlphabetic(str.charAt(lt))) {
+        while(lt < rt) {
+            if (!Character.isAlphabetic(s[lt])) {
                 lt++;
-            } else if (!Character.isAlphabetic(str.charAt(rt))) {
+            } else if(!Character.isAlphabetic(s[rt])) {
                 rt--;
             } else {
-                char c = arr[lt];
-                arr[lt] = arr[rt];
-                arr[rt] = c;
+                char tmp = s[lt];
+                s[lt] = s[rt];
+                s[rt] = tmp;
                 lt++;
                 rt--;
             }
         }
-        return String.valueOf(arr);
+        answer = String.valueOf(s);
+        return answer;
+//        int lt = 0;
+//        int rt = str.length() - 1;
+//        char[] arr = str.toCharArray();
+//
+//        while (lt < rt) {
+//            if (!Character.isAlphabetic(str.charAt(lt))) {
+//                lt++;
+//            } else if (!Character.isAlphabetic(str.charAt(rt))) {
+//                rt--;
+//            } else {
+//                char c = arr[lt];
+//                arr[lt] = arr[rt];
+//                arr[rt] = c;
+//                lt++;
+//                rt--;
+//            }
+//        }
+//        return String.valueOf(arr);
     }
 }
