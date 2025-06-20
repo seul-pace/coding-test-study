@@ -12,16 +12,17 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String number = br.readLine();
-        int n = Integer.parseInt(number);
-
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st;
+        String str;
 
-        for (int i = 0; i < n; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
+        while ((str = br.readLine()) != null) {
+            st = new StringTokenizer(str);
+
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            bw.write(String.valueOf(a + b)); // 숫자 그대로 출력하려면 String 형태로 write
+
+            bw.write(String.valueOf(a + b));
             bw.newLine();
         }
         bw.flush();
@@ -30,6 +31,108 @@ public class Main {
 }
 
 /**
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ *
+ *         while (true) {
+ *             StringTokenizer st = new StringTokenizer(br.readLine());
+ *             int a = Integer.parseInt(st.nextToken());
+ *             int b = Integer.parseInt(st.nextToken());
+ *
+ *             if (a + b == 0) {
+ *                 break;
+ *             }
+ *
+ *             bw.write(String.valueOf(a + b));
+ *             bw.newLine();
+ *         }
+ *
+ *         bw.flush();
+ *         bw.close();
+ *     }
+ *
+ * public static void main(String[] args) {
+ *         Scanner sc = new Scanner(System.in);
+ *         int n = sc.nextInt();
+ *
+ *         for(int i = 1; i <= n; i++) {
+ *             for(int j = n - i; j > 0; j--) {
+ *                 System.out.print(" ");
+ *             }
+ *             for(int j = 1; j <= i; j++) {
+ *                 System.out.print("*");
+ *             }
+ *             System.out.println();
+ *         }
+ *     }
+ *
+ * public static void main(String[] args) {
+ *         Scanner sc = new Scanner(System.in);
+ *         int n = sc.nextInt();
+ *
+ *         for(int i = 1; i <= n; i++) {
+ *             for(int j = 1; j <= i; j++) {
+ *                 System.out.print("*");
+ *             }
+ *             System.out.println();
+ *         }
+ *     }
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         String number = br.readLine();
+ *         int n = Integer.parseInt(number);
+ *
+ *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ *
+ *         for (int i = 1; i <= n; i++) {
+ *             StringTokenizer st = new StringTokenizer(br.readLine());
+ *             int a = Integer.parseInt(st.nextToken());
+ *             int b = Integer.parseInt(st.nextToken());
+ *             bw.write("Case #" + i + ": " + a + " + " + b + " = " + (a + b));
+ *             bw.newLine();
+ *         }
+ *         bw.flush();
+ *         bw.close();
+ *     }
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         String number = br.readLine();
+ *         int n = Integer.parseInt(number);
+ *
+ *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ *
+ *         for (int i = 1; i <= n; i++) {
+ *             StringTokenizer st = new StringTokenizer(br.readLine());
+ *             int a = Integer.parseInt(st.nextToken());
+ *             int b = Integer.parseInt(st.nextToken());
+ *             bw.write("Case #" + i + ": " + (a + b));
+ *             bw.newLine();
+ *         }
+ *         bw.flush();
+ *         bw.close();
+ *     }
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         String number = br.readLine();
+ *         int n = Integer.parseInt(number);
+ *
+ *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ *
+ *         for (int i = 0; i < n; i++) {
+ *             StringTokenizer st = new StringTokenizer(br.readLine());
+ *             int a = Integer.parseInt(st.nextToken());
+ *             int b = Integer.parseInt(st.nextToken());
+ *             bw.write(String.valueOf(a + b)); // 숫자 그대로 출력하려면 String 형태로 write
+ *             bw.newLine();
+ *         }
+ *         bw.flush();
+ *         bw.close();
+ *     }
  *
  *  public static void main(String[] args) {
  *         Scanner sc = new Scanner(System.in);
