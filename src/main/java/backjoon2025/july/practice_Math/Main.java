@@ -11,18 +11,32 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         int n = Integer.parseInt(br.readLine());
-        int result = 2;
-        for (int i = 0; i < n; i++) {
-            result += (int) Math.pow(2, i);
-        } // 걍 Math.pow(2, n) + 1 하면 result 였음 ㅜ
-        br.close();
-        System.out.println(result * result);
+
+        int room = 1;
+        int index = 0;
+
+        while (6 * index + 1 < n) {
+            index += (room++);
+        }
+
+        System.out.println(room);
     }
 }
 
 /**
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *
+ *         int n = Integer.parseInt(br.readLine());
+ *         int result = 2;
+ *         for (int i = 0; i < n; i++) {
+ *             result += (int) Math.pow(2, i);
+ *         } // 걍 Math.pow(2, n) + 1 하면 result 였음 ㅜ
+ *         br.close();
+ *         System.out.println(result * result);
+ *     }
+ *
  * public static void main(String[] args) throws IOException {
  *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
  *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
