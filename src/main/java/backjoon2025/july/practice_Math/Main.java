@@ -1,77 +1,68 @@
 package backjoon2025.july.practice_Math;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        int i = 0;
-        int sum = 0;
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        do {
-            sum += (++i);
-        } while(sum < n);
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int v = Integer.parseInt(st.nextToken());
 
-        int startNumber = (sum - i + 1);
-        int diffNumber = n - startNumber;
-        int child = 1;
-        int parents = 1;
+        int day = 1;
 
-        if(i % 2 == 0) { // 짝수인 경우
-            // 위-> 아래
-            // 언제나 분자가 1
-            // 분자 증가, 분모 감소
-            child = i - diffNumber;
-            parents += diffNumber;
-
-        }else {
-            // 아래 -> 위
-            // 언제나 분모가 1
-            // 분자 감소, 분모 증가
-            child += diffNumber;
-            parents = i - diffNumber;
+        if (a >= v) {
+            System.out.println(day);
+            return;
         }
-
-        System.out.printf("%d/%d", parents, child);
-
-        /*
-        33을 하면
-        8번째 대각선
-
-        1번 대각선
-        2번 대각선 위->아래
-        3번 대각선 아래->위
-        4번 대각선 위->아래
-        5번 대각선 아래->위
-
-        28(+1)보다 크고 36보다 작아 -> 8번째 대각선
-        29는 1/8
-        30은 2/7
-        31은 3/6
-        32는 4/5
-        33은 5/4
-
-         1  2  6  7 15 16 28 29 45 46
-         3  5  8 14 17 27 30 44
-         4  9 13 18 26 31 43
-        10 12 19 25 32 42
-        11 20 24 33 41
-        21 23 34 40
-        22 35 39
-        36 38
-        37
-         */
+        int meter = v - a;
+        day += (meter / (a - b));
+        if (meter % (a - b) != 0) {
+            day += 1;
+        }
+        System.out.println(day);
     }
 }
-
 /**
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         int n = Integer.parseInt(br.readLine());
+ *         int i = 0;
+ *         int sum = 0;
+ *
+ *         do {
+ *             sum += (++i);
+ *         } while(sum < n);
+ *
+ *         int startNumber = (sum - i + 1);
+ *         int diffNumber = n - startNumber;
+ *         int child = 1;
+ *         int parents = 1;
+ *
+ *         if(i % 2 == 0) { // 짝수인 경우
+ *             // 위-> 아래
+ *             // 언제나 분자가 1
+ *             // 분자 증가, 분모 감소
+ *             child = i - diffNumber;
+ *             parents += diffNumber;
+ *
+ *         }else {
+ *             // 아래 -> 위
+ *             // 언제나 분모가 1
+ *             // 분자 감소, 분모 증가
+ *             child += diffNumber;
+ *             parents = i - diffNumber;
+ *         }
+ *
+ *         System.out.printf("%d/%d", parents, child);
+ *     }
  *
  * public static void main(String[] args) throws IOException {
  *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
