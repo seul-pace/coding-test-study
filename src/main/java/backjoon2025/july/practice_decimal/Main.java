@@ -7,49 +7,79 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n;
-        List<Integer> aliquots = new LinkedList<>();
-        while ((n = Integer.parseInt(br.readLine())) != -1) {
-            for (int i = 1; i < n; i++) {
-                // 약수 여부
-                if (n % i == 0) {
-                    aliquots.add(i);
+        int n = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int result = 0;
+        boolean isPrimeNumber = true;
+
+        while (n-- > 0) {
+            int token = Integer.parseInt(st.nextToken());
+
+            if (token == 1) continue;
+
+            for (int i = 2; i < token; i++) {
+                if (token % i == 0) {
+                    isPrimeNumber = false;
+                    break;
                 }
             }
-            if (aliquots.isEmpty() || !isPerfectNumber(n, aliquots)) {
-                bw.write(n + " is NOT perfect.");
-            } else {
-                bw.write(makePerfectNumberFormal(n, aliquots));
+
+            if (isPrimeNumber) {
+                result++;
             }
-            aliquots.clear();
-            bw.newLine();
+            isPrimeNumber = true;
         }
 
-        bw.flush();
-        br.close();
-        bw.close();
-    }
-
-    public static boolean isPerfectNumber(int n, List<Integer> aliquots) {
-        return n == aliquots.stream().mapToInt(i -> i).sum();
-    }
-
-    public static String makePerfectNumberFormal(int n, List<Integer> aliquots) {
-        StringBuilder sb = new StringBuilder(n + " = ");
-        aliquots.forEach(i -> sb.append(i).append(" + "));
-        sb.delete(sb.length() - 2, sb.length());
-        return sb.toString();
+        System.out.println(result);
     }
 }
 
 /**
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ *
+ *         int n;
+ *         List<Integer> aliquots = new LinkedList<>();
+ *         while ((n = Integer.parseInt(br.readLine())) != -1) {
+ *             for (int i = 1; i < n; i++) {
+ *                 // 약수 여부
+ *                 if (n % i == 0) {
+ *                     aliquots.add(i);
+ *                 }
+ *             }
+ *             if (aliquots.isEmpty() || !isPerfectNumber(n, aliquots)) {
+ *                 bw.write(n + " is NOT perfect.");
+ *             } else {
+ *                 bw.write(makePerfectNumberFormal(n, aliquots));
+ *             }
+ *             aliquots.clear();
+ *             bw.newLine();
+ *         }
+ *
+ *         bw.flush();
+ *         br.close();
+ *         bw.close();
+ *     }
+ *
+ *     public static boolean isPerfectNumber(int n, List<Integer> aliquots) {
+ *         return n == aliquots.stream().mapToInt(i -> i).sum();
+ *     }
+ *
+ *     public static String makePerfectNumberFormal(int n, List<Integer> aliquots) {
+ *         StringBuilder sb = new StringBuilder(n + " = ");
+ *         aliquots.forEach(i -> sb.append(i).append(" + "));
+ *         sb.delete(sb.length() - 2, sb.length());
+ *         return sb.toString();
+ *     }
  *
  * public static void main(String[] args) throws IOException {
  *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
