@@ -1,47 +1,75 @@
 package backjoon2025.july.practice_decimal;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.StringTokenizer;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        int m = Integer.parseInt(br.readLine());
         int n = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int result = 0;
-        boolean isPrimeNumber = true;
 
-        while (n-- > 0) {
-            int token = Integer.parseInt(st.nextToken());
+        int sum = 0;
+        int min = n;
 
-            if (token == 1) continue;
-
-            for (int i = 2; i < token; i++) {
-                if (token % i == 0) {
-                    isPrimeNumber = false;
-                    break;
-                }
+        for (int i = n; i >= m; i--) {
+            if (isPrimeNumber(i)) {
+                sum += i;
+                min = Math.min(min, i);
             }
-
-            if (isPrimeNumber) {
-                result++;
-            }
-            isPrimeNumber = true;
         }
 
-        System.out.println(result);
+        if (sum == 0) {
+            System.out.println(-1);
+        } else {
+            System.out.println(sum);
+            System.out.println(min);
+        }
+    }
+
+    public static boolean isPrimeNumber(int number) {
+        if (number == 1) return false;
+
+        for (int i = 2; i <= number/2; i++) {
+            if (number % i == 0) return false;
+        }
+        return true;
     }
 }
 
 /**
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *
+ *         int n = Integer.parseInt(br.readLine());
+ *         StringTokenizer st = new StringTokenizer(br.readLine());
+ *         int result = 0;
+ *         boolean isPrimeNumber = true;
+ *
+ *         while (n-- > 0) {
+ *             int token = Integer.parseInt(st.nextToken());
+ *
+ *             if (token == 1) continue;
+ *
+ *             for (int i = 2; i < token; i++) {
+ *                 if (token % i == 0) {
+ *                     isPrimeNumber = false;
+ *                     break;
+ *                 }
+ *             }
+ *
+ *             if (isPrimeNumber) {
+ *                 result++;
+ *             }
+ *             isPrimeNumber = true;
+ *         }
+ *
+ *         System.out.println(result);
+ *     }
  *
  * public static void main(String[] args) throws IOException {
  *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
