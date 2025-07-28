@@ -1,46 +1,73 @@
 package backjoon2025.july.practice_decimal;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int m = Integer.parseInt(br.readLine());
         int n = Integer.parseInt(br.readLine());
 
-        int sum = 0;
-        int min = n;
+        if (n == 1) return;
 
-        for (int i = n; i >= m; i--) {
-            if (isPrimeNumber(i)) {
-                sum += i;
-                min = Math.min(min, i);
+        int index = 2;
+        do {
+            if (n % index == 0) {
+                n = n / index;
+                bw.write(String.valueOf(index));
+                bw.newLine();
+                index = 2;
+            } else {
+                index++;
             }
-        }
+        } while (n != 1);
 
-        if (sum == 0) {
-            System.out.println(-1);
-        } else {
-            System.out.println(sum);
-            System.out.println(min);
-        }
-    }
-
-    public static boolean isPrimeNumber(int number) {
-        if (number == 1) return false;
-
-        for (int i = 2; i <= number/2; i++) {
-            if (number % i == 0) return false;
-        }
-        return true;
+        bw.flush();
+        br.close();
+        bw.close();
     }
 }
 
 /**
+ *
+ * public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *
+ *         int m = Integer.parseInt(br.readLine());
+ *         int n = Integer.parseInt(br.readLine());
+ *
+ *         int sum = 0;
+ *         int min = n;
+ *
+ *         for (int i = n; i >= m; i--) {
+ *             if (isPrimeNumber(i)) {
+ *                 sum += i;
+ *                 min = Math.min(min, i);
+ *             }
+ *         }
+ *
+ *         if (sum == 0) {
+ *             System.out.println(-1);
+ *         } else {
+ *             System.out.println(sum);
+ *             System.out.println(min);
+ *         }
+ *     }
+ *
+ *     public static boolean isPrimeNumber(int number) {
+ *         if (number == 1) return false;
+ *
+ *         for (int i = 2; i <= number/2; i++) {
+ *             if (number % i == 0) return false;
+ *         }
+ *         return true;
+ *     }
  *
  * public static void main(String[] args) throws IOException {
  *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
