@@ -3,68 +3,73 @@ package backjoon2025.july.geometric1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
 
-    // 3009: 직사각형의 3개의 x, y 좌표가 주어지고 나머지 1개 찾기 (3개밖에 안 들어온다는 전제 하에 이게 제일 빠름)
+    // 15894: 가장 아랫층 수부터 피라미드 모양 도형의 전체 둘레 구하기
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-        StringBuffer sb = new StringBuffer();
-
-        int x1, x2 = -1, y1, y2 = -1;
-
-        // 1번
-        st = new StringTokenizer(br.readLine());
-        x1 = Integer.parseInt(st.nextToken());
-        y1 = Integer.parseInt(st.nextToken());
-
-        // 2번
-        st = new StringTokenizer(br.readLine());
-        int x = Integer.parseInt(st.nextToken());
-        int y = Integer.parseInt(st.nextToken());
-
-        if (x != x1) {
-            x2 = x;
-        } else {
-            x1 = -1;
-        }
-        if (y != y1) {
-            y2 = y;
-        } else {
-            y1 = -1;
-        }
-
-        // 3번
-        st = new StringTokenizer(br.readLine());
-        x = Integer.parseInt(st.nextToken());
-        y = Integer.parseInt(st.nextToken());
-
-        if (x1 == -1) {
-            sb.append(x).append(" ");
-        } else {
-            if (x == x1) {
-                sb.append(x2).append(" ");
-            } else {
-                sb.append(x1).append(" ");
-            }
-        }
-        if (y1 == -1) {
-            sb.append(y);
-        } else {
-            if (y == y1) {
-                sb.append(y2);
-            } else {
-                sb.append(y1);
-            }
-        }
-
-        System.out.println(sb);
+        System.out.println(Long.parseLong(br.readLine()) * 4); // 입력 값이 10의 9승까지 가능해서..
     }
 }
 
 /**
+ *
+ * // 3009: 직사각형의 3개의 x, y 좌표가 주어지고 나머지 1개 찾기 (3개밖에 안 들어온다는 전제 하에 이게 제일 빠름)
+ *     public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         StringTokenizer st;
+ *         StringBuffer sb = new StringBuffer();
+ *
+ *         int x1, x2 = -1, y1, y2 = -1;
+ *
+ *         // 1번
+ *         st = new StringTokenizer(br.readLine());
+ *         x1 = Integer.parseInt(st.nextToken());
+ *         y1 = Integer.parseInt(st.nextToken());
+ *
+ *         // 2번
+ *         st = new StringTokenizer(br.readLine());
+ *         int x = Integer.parseInt(st.nextToken());
+ *         int y = Integer.parseInt(st.nextToken());
+ *
+ *         if (x != x1) {
+ *             x2 = x;
+ *         } else {
+ *             x1 = -1;
+ *         }
+ *         if (y != y1) {
+ *             y2 = y;
+ *         } else {
+ *             y1 = -1;
+ *         }
+ *
+ *         // 3번
+ *         st = new StringTokenizer(br.readLine());
+ *         x = Integer.parseInt(st.nextToken());
+ *         y = Integer.parseInt(st.nextToken());
+ *
+ *         if (x1 == -1) {
+ *             sb.append(x).append(" ");
+ *         } else {
+ *             if (x == x1) {
+ *                 sb.append(x2).append(" ");
+ *             } else {
+ *                 sb.append(x1).append(" ");
+ *             }
+ *         }
+ *         if (y1 == -1) {
+ *             sb.append(y);
+ *         } else {
+ *             if (y == y1) {
+ *                 sb.append(y2);
+ *             } else {
+ *                 sb.append(y1);
+ *             }
+ *         }
+ *
+ *         System.out.println(sb);
+ *     }
  *
  * // 1085: x,y 좌표에서 0,0 에서 w,h 까지의 직사각형의 경계선까지 거리
  *     public static void main(String[] args) throws IOException {
