@@ -3,17 +3,43 @@ package backjoon2025.july.geometric1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
 
-    // 15894: 가장 아랫층 수부터 피라미드 모양 도형의 전체 둘레 구하기
+    // 9063: 좌표를 받고 좌표들을 포함하는 가장 작은 직사각형의 너비
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(Long.parseLong(br.readLine()) * 4); // 입력 값이 10의 9승까지 가능해서..
+        StringTokenizer st;
+        int n = Integer.parseInt(br.readLine());
+
+        int minX = Integer.MAX_VALUE;
+        int maxX = Integer.MIN_VALUE;
+        int minY = Integer.MAX_VALUE;
+        int maxY = Integer.MIN_VALUE;
+
+        for (int i=0; i<n; i++) {
+            st = new StringTokenizer(br.readLine());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
+
+            minX = Math.min(minX, x);
+            maxX = Math.max(maxX, x);
+            minY = Math.min(minY, y);
+            maxY = Math.max(maxY, y);
+        }
+
+        System.out.println((maxX - minX) * (maxY - minY));
     }
 }
 
 /**
+ *
+ * // 15894: 가장 아랫층 수부터 피라미드 모양 도형의 전체 둘레 구하기
+ *     public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         System.out.println(Long.parseLong(br.readLine()) * 4); // 입력 값이 10의 9승까지 가능해서..
+ *     }
  *
  * // 3009: 직사각형의 3개의 x, y 좌표가 주어지고 나머지 1개 찾기 (3개밖에 안 들어온다는 전제 하에 이게 제일 빠름)
  *     public static void main(String[] args) throws IOException {
