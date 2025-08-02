@@ -3,37 +3,55 @@ package backjoon2025.july.geometric1;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
 
-    // 9063: 좌표를 받고 좌표들을 포함하는 가장 작은 직사각형의 너비
+    // 10101: 세 각을 받아 삼각형의 종류 구분
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
-        int n = Integer.parseInt(br.readLine());
 
-        int minX = Integer.MAX_VALUE;
-        int maxX = Integer.MIN_VALUE;
-        int minY = Integer.MAX_VALUE;
-        int maxY = Integer.MIN_VALUE;
+        int a = Integer.parseInt(br.readLine());
+        int b = Integer.parseInt(br.readLine());
+        int c = Integer.parseInt(br.readLine());
 
-        for (int i=0; i<n; i++) {
-            st = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
-
-            minX = Math.min(minX, x);
-            maxX = Math.max(maxX, x);
-            minY = Math.min(minY, y);
-            maxY = Math.max(maxY, y);
+        if (a == 60 && b == 60 && c == 60) {
+            System.out.println("Equilateral");
+        } else if (a + b + c != 180) {
+            System.out.println("Error");
+        } else if (a != b && a != c && b != c) {
+            System.out.println("Scalene");
+        } else {
+            System.out.println("Isosceles");
         }
-
-        System.out.println((maxX - minX) * (maxY - minY));
     }
 }
 
 /**
+ *
+ * // 9063: 좌표를 받고 좌표들을 포함하는 가장 작은 직사각형의 너비
+ *     public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         StringTokenizer st;
+ *         int n = Integer.parseInt(br.readLine());
+ *
+ *         int minX = Integer.MAX_VALUE;
+ *         int maxX = Integer.MIN_VALUE;
+ *         int minY = Integer.MAX_VALUE;
+ *         int maxY = Integer.MIN_VALUE;
+ *
+ *         for (int i=0; i<n; i++) {
+ *             st = new StringTokenizer(br.readLine());
+ *             int x = Integer.parseInt(st.nextToken());
+ *             int y = Integer.parseInt(st.nextToken());
+ *
+ *             minX = Math.min(minX, x);
+ *             maxX = Math.max(maxX, x);
+ *             minY = Math.min(minY, y);
+ *             maxY = Math.max(maxY, y);
+ *         }
+ *
+ *         System.out.println((maxX - minX) * (maxY - minY));
+ *     }
  *
  * // 15894: 가장 아랫층 수부터 피라미드 모양 도형의 전체 둘레 구하기
  *     public static void main(String[] args) throws IOException {
