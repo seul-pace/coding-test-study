@@ -1,59 +1,75 @@
 package backjoon2025.july.geometric1;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
 
-    // 5073: 세 변의 길이가 주어질 때 삼각형의 종류 도출
+    // 14215: 세 개의 막대가 주어질 때 만들 수 있는 가장 큰 삼각형의 둘레
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
         int[] arr = new int[3];
+        arr[0] = Integer.parseInt(st.nextToken());
+        arr[1] = Integer.parseInt(st.nextToken());
+        arr[2] = Integer.parseInt(st.nextToken());
+        Arrays.sort(arr);
 
-        while (true) {
-            st = new StringTokenizer(br.readLine());
-
-            arr[0] = Integer.parseInt(st.nextToken());
-            arr[1] = Integer.parseInt(st.nextToken());
-            arr[2] = Integer.parseInt(st.nextToken());
-
-            if (arr[0] == 0 && arr[1] == 0 && arr[2] == 0) {
-                break;
-            }
-
-            Arrays.sort(arr);
-            if (arr[0] == arr[1] && arr[1] == arr[2]) {
-                bw.write("Equilateral");
-                bw.newLine();
-            } else if (arr[2] == arr[1]) {
-                bw.write("Isosceles");
-                bw.newLine();
-            } else if (arr[1] == arr[0] && arr[2] < arr[0] + arr[1]) {
-                bw.write("Isosceles");
-                bw.newLine();
-            } else if (arr[2] >= arr[0] + arr[1]) {
-                bw.write("Invalid");
-                bw.newLine();
-            } else {
-                bw.write("Scalene");
-                bw.newLine();
-            }
+        if (arr[0] + arr[1] <= arr[2]) {
+            System.out.println(arr[0] + arr[1] + (arr[0] + arr[1] - 1));
+        } else {
+            System.out.println(arr[0] + arr[1] + arr[2]);
         }
-
-        bw.flush();
-        br.close();
-        bw.close();
     }
 }
 
 /**
+ *
+ * // 5073: 세 변의 길이가 주어질 때 삼각형의 종류 도출
+ *     public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+ *         StringTokenizer st;
+ *         int[] arr = new int[3];
+ *
+ *         while (true) {
+ *             st = new StringTokenizer(br.readLine());
+ *
+ *             arr[0] = Integer.parseInt(st.nextToken());
+ *             arr[1] = Integer.parseInt(st.nextToken());
+ *             arr[2] = Integer.parseInt(st.nextToken());
+ *
+ *             if (arr[0] == 0 && arr[1] == 0 && arr[2] == 0) {
+ *                 break;
+ *             }
+ *
+ *             Arrays.sort(arr);
+ *             if (arr[0] == arr[1] && arr[1] == arr[2]) {
+ *                 bw.write("Equilateral");
+ *                 bw.newLine();
+ *             } else if (arr[2] == arr[1]) {
+ *                 bw.write("Isosceles");
+ *                 bw.newLine();
+ *             } else if (arr[1] == arr[0] && arr[2] < arr[0] + arr[1]) {
+ *                 bw.write("Isosceles");
+ *                 bw.newLine();
+ *             } else if (arr[2] >= arr[0] + arr[1]) {
+ *                 bw.write("Invalid");
+ *                 bw.newLine();
+ *             } else {
+ *                 bw.write("Scalene");
+ *                 bw.newLine();
+ *             }
+ *         }
+ *
+ *         bw.flush();
+ *         br.close();
+ *         bw.close();
+ *     }
  *
  * // 10101: 세 각을 받아 삼각형의 종류 구분
  *     public static void main(String[] args) throws IOException {
