@@ -4,16 +4,24 @@ import java.util.Scanner;
 
 public class Main {
 
-    // 24264: 특정 알고리즘의 시간 복잡도 구하기 문제
+    // 24265: 특정 알고리즘의 시간 복잡도 구하기 문제
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         long l = Long.parseLong(sc.next());
-        System.out.println(l * l); // 반복문이 중첩되어 n 제곱 만큼 실행 (=수행 횟수)
+        System.out.println(l * (l - 1) / 2);
         System.out.println(2); // 제곱이니까 2
     }
 }
 
 /**
+ *
+ * // 24264: 특정 알고리즘의 시간 복잡도 구하기 문제
+ *     public static void main(String[] args) {
+ *         Scanner sc = new Scanner(System.in);
+ *         long l = Long.parseLong(sc.next());
+ *         System.out.println(l * l); // 반복문이 중첩되어 n 제곱 만큼 실행 (=수행 횟수)
+ *         System.out.println(2); // 제곱이니까 2
+ *     }
  *
  * // 24263: 특정 알고리즘의 시간 복잡도 구하기 문제
  *     public static void main(String[] args) {
