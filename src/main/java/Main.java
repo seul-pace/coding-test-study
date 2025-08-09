@@ -1,33 +1,44 @@
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
-    /**
-     * 5
-     * 1 2 3 4 5
-     * 4 6 8 9 10
-     */
+    // 123456을 열심히 뒤집기
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        int[] arr = {1, 2, 3, 4, 5, 6};
 
-        String a = sc.nextLine();
-        String b = sc.nextLine();
+        List<Integer> list = Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.toList());
 
-        String[] aArr = a.split(" ");
-        String[] bArr = b.split(" ");
+        List<Integer> result = reverse(list);
 
-        for (int i = 0; i < n; i++) {
-            if (i % 2 != 0) {
-                System.out.print(bArr[i] + " ");
-            }
+        int[] arr2 = list.stream()
+                .mapToInt(Integer::intValue).toArray();
+
+        System.out.println();
+    }
+
+    public static List<Integer> reverse(List<Integer> list) {
+        if (list.size() == 1) return list;
+
+        Collections.reverse(list);
+
+        int k = list.size() / 2;
+        if (list.size() % 2 != 0) {
+            k = k + 1;
         }
-        for (int i = 0; i < n; i++) {
-            if (i % 2 == 0) {
-                System.out.print(aArr[i] + " ");
-            }
-        }
 
+        List<Integer> sublist1 = list.subList(0, k);
+        List<Integer> sublist2 = list.subList(k, list.size());
+
+        List<Integer> result = new ArrayList<>();
+        result.addAll(reverse(sublist1));
+        result.addAll(reverse(sublist2));
+        return result;
     }
 
 //    public static void main(String[] args) {
