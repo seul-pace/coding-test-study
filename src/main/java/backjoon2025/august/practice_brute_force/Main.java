@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    // 1018:
+    // 1018: B, W로 주어진 배열에서 체스판을 만들기 위해 각각 다른 값으로 만들기 위한 최소 변경 수 구하기
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
