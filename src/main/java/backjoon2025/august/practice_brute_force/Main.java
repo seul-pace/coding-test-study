@@ -7,26 +7,94 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    // 19532: 연립방정식 풀이
+    // 1018:
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int a = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
-        int c = Integer.parseInt(st.nextToken());
-        int d = Integer.parseInt(st.nextToken());
-        int e = Integer.parseInt(st.nextToken());
-        int f = Integer.parseInt(st.nextToken());
+        int n = Integer.parseInt(st.nextToken()); // 행
+        int m = Integer.parseInt(st.nextToken()); // 열
 
-        int y = (c * d - a * f) / (b * d - a * e);
-        int x = (c * e - b * f) / (a * e - b * d);
+        // 입력 받기
+        Boolean[][] input = new Boolean[n][m];
+        for (int i = 0; i < n; i++) {
+            String temp = br.readLine();
+            String[] arr = temp.split("");
 
-        System.out.println(x + " " + y);
+            for (int j = 0; j < m; j++) {
+                // B = true / W = false
+                input[i][j] = arr[j].equals("B");
+            }
+        }
+
+        int result = Integer.MAX_VALUE;
+        // 계산
+        for (int i = 0; i <= n - 8; i++) {
+            for (int j = 0; j <= m - 8; j++) {
+                int count = countPaintChessboard(i, j, input);
+                if (count == 0) {
+                    System.out.println(count);
+                    return;
+                } else {
+                    result = Math.min(result, count);
+                }
+            }
+        }
+
+        System.out.println(result);
+    }
+    private static int countPaintChessboard(int startX, int startY, Boolean[][] arr) {
+        int result = Integer.MAX_VALUE;
+
+        boolean startFlag = true;
+        boolean flag = true; // 번갈아 가기 위한 표식
+        for (int l = 0; l < 2; l++) { // 첫 번째 색상의 가짓수를 2개로 둔다
+            int temp = 0;
+
+            for (int i = startX; i < startX + 8; i++) {
+                for (int j = startY; j < startY + 8; j++) {
+                    boolean currentColor = arr[i][j];
+                    if (flag) {
+                        if (currentColor != startFlag) {
+                            temp++;
+                        }
+                    } else {
+                        if (currentColor == startFlag) {
+                            temp++;
+                        }
+                    }
+                    flag = !flag;
+                }
+                flag = !flag;
+            }
+
+            // 한 번 더 돌리기
+            result = Math.min(result, temp);
+            startFlag = !startFlag;
+        }
+
+        return result;
     }
 }
 
 /**
+ *
+ * // 19532: 연립방정식 풀이
+ *     public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *
+ *         StringTokenizer st = new StringTokenizer(br.readLine());
+ *         int a = Integer.parseInt(st.nextToken());
+ *         int b = Integer.parseInt(st.nextToken());
+ *         int c = Integer.parseInt(st.nextToken());
+ *         int d = Integer.parseInt(st.nextToken());
+ *         int e = Integer.parseInt(st.nextToken());
+ *         int f = Integer.parseInt(st.nextToken());
+ *
+ *         int y = (c * d - a * f) / (b * d - a * e);
+ *         int x = (c * e - b * f) / (a * e - b * d);
+ *
+ *         System.out.println(x + " " + y);
+ *     }
  *
  * // 2231: 분해합, n이 주어지면 1부터 각 숫자 + 자리의 합을 더한 값이 n인 경우 중 가장 작은 값 구하기
  *     public static void main(String[] args) throws IOException {
