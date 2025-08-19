@@ -7,76 +7,93 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    // 1018: B, W로 주어진 배열에서 체스판을 만들기 위해 각각 다른 값으로 만들기 위한 최소 변경 수 구하기
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken()); // 행
-        int m = Integer.parseInt(st.nextToken()); // 열
+        int n = Integer.parseInt(br.readLine());
 
-        // 입력 받기
-        Boolean[][] input = new Boolean[n][m];
-        for (int i = 0; i < n; i++) {
-            String temp = br.readLine();
-            String[] arr = temp.split("");
-
-            for (int j = 0; j < m; j++) {
-                // B = true / W = false
-                input[i][j] = arr[j].equals("B");
+        // 머리 쓰기 싫음 그냥 쭉 더하기
+        int index = 666;
+        int cnt = 1; // 666부터 시작
+        while (cnt != n) {
+            index++;
+            String value = String.valueOf(index);
+            if (value.contains("666")) {
+                cnt++;
             }
         }
-
-        int result = Integer.MAX_VALUE;
-        // 계산
-        for (int i = 0; i <= n - 8; i++) {
-            for (int j = 0; j <= m - 8; j++) {
-                int count = countPaintChessboard(i, j, input);
-                if (count == 0) {
-                    System.out.println(count);
-                    return;
-                } else {
-                    result = Math.min(result, count);
-                }
-            }
-        }
-
-        System.out.println(result);
-    }
-    private static int countPaintChessboard(int startX, int startY, Boolean[][] arr) {
-        int result = Integer.MAX_VALUE;
-
-        boolean startFlag = true;
-        boolean flag = true; // 번갈아 가기 위한 표식
-        for (int l = 0; l < 2; l++) { // 첫 번째 색상의 가짓수를 2개로 둔다
-            int temp = 0;
-
-            for (int i = startX; i < startX + 8; i++) {
-                for (int j = startY; j < startY + 8; j++) {
-                    boolean currentColor = arr[i][j];
-                    if (flag) {
-                        if (currentColor != startFlag) {
-                            temp++;
-                        }
-                    } else {
-                        if (currentColor == startFlag) {
-                            temp++;
-                        }
-                    }
-                    flag = !flag;
-                }
-                flag = !flag;
-            }
-
-            // 한 번 더 돌리기
-            result = Math.min(result, temp);
-            startFlag = !startFlag;
-        }
-
-        return result;
+        System.out.println(index);
     }
 }
 
 /**
+ *
+ * // 1018: B, W로 주어진 배열에서 체스판을 만들기 위해 각각 다른 값으로 만들기 위한 최소 변경 수 구하기
+ *     public static void main(String[] args) throws IOException {
+ *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ *         StringTokenizer st = new StringTokenizer(br.readLine());
+ *         int n = Integer.parseInt(st.nextToken()); // 행
+ *         int m = Integer.parseInt(st.nextToken()); // 열
+ *
+ *         // 입력 받기
+ *         Boolean[][] input = new Boolean[n][m];
+ *         for (int i = 0; i < n; i++) {
+ *             String temp = br.readLine();
+ *             String[] arr = temp.split("");
+ *
+ *             for (int j = 0; j < m; j++) {
+ *                 // B = true / W = false
+ *                 input[i][j] = arr[j].equals("B");
+ *             }
+ *         }
+ *
+ *         int result = Integer.MAX_VALUE;
+ *         // 계산
+ *         for (int i = 0; i <= n - 8; i++) {
+ *             for (int j = 0; j <= m - 8; j++) {
+ *                 int count = countPaintChessboard(i, j, input);
+ *                 if (count == 0) {
+ *                     System.out.println(count);
+ *                     return;
+ *                 } else {
+ *                     result = Math.min(result, count);
+ *                 }
+ *             }
+ *         }
+ *
+ *         System.out.println(result);
+ *     }
+ *     private static int countPaintChessboard(int startX, int startY, Boolean[][] arr) {
+ *         int result = Integer.MAX_VALUE;
+ *
+ *         boolean startFlag = true;
+ *         boolean flag = true; // 번갈아 가기 위한 표식
+ *         for (int l = 0; l < 2; l++) { // 첫 번째 색상의 가짓수를 2개로 둔다
+ *             int temp = 0;
+ *
+ *             for (int i = startX; i < startX + 8; i++) {
+ *                 for (int j = startY; j < startY + 8; j++) {
+ *                     boolean currentColor = arr[i][j];
+ *                     if (flag) {
+ *                         if (currentColor != startFlag) {
+ *                             temp++;
+ *                         }
+ *                     } else {
+ *                         if (currentColor == startFlag) {
+ *                             temp++;
+ *                         }
+ *                     }
+ *                     flag = !flag;
+ *                 }
+ *                 flag = !flag;
+ *             }
+ *
+ *             // 한 번 더 돌리기
+ *             result = Math.min(result, temp);
+ *             startFlag = !startFlag;
+ *         }
+ *
+ *         return result;
+ *     }
  *
  * // 19532: 연립방정식 풀이
  *     public static void main(String[] args) throws IOException {
